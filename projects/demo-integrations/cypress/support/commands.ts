@@ -24,7 +24,7 @@ declare global {
 
 Cypress.Commands.add('getByAutomationId', id => cy.get(`[automation-id=${id}]`));
 Cypress.Commands.add('findByAutomationId', {prevSubject: true}, (subject: any, id) =>
-    subject.find(`[automation-id=${id}]`),
+    cy.wrap(subject).find(`[automation-id=${id}]`),
 );
 Cypress.Commands.add('goToDemoPage', goToDemoPage);
 Cypress.Commands.add('hideHeader', hideHeader);
