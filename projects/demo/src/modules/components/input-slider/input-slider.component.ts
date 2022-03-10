@@ -2,6 +2,7 @@ import {Component, forwardRef} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDocExample} from '@taiga-ui/addon-doc';
+import {TuiContextWithImplicit, TuiTransactionAutofillName} from '@taiga-ui/cdk';
 import {TuiPluralize, TuiSizeL} from '@taiga-ui/core';
 import {TuiKeySteps} from '@taiga-ui/kit';
 
@@ -65,11 +66,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     readonly segmentsVariants: readonly number[] = [0, 1, 5, 13];
 
-    segments = this.segmentsVariants[0];
+    segments = 1;
 
-    readonly stepsVariants: readonly number[] = [0, 4, 10];
-
-    steps = this.stepsVariants[0];
+    steps = 0;
 
     readonly quantumVariants: readonly number[] = [1, 0.01, 0.001, 0.0001, 10, 100];
 
@@ -78,6 +77,9 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     readonly sizeVariants: ReadonlyArray<TuiSizeL> = ['m', 'l'];
 
     size = this.sizeVariants[1];
+
+    prefix = '';
+    postfix = '';
 
     readonly pluralizeVariants: ReadonlyArray<TuiPluralize | Record<string, string>> = [
         ['year', 'years', 'years'],
@@ -96,6 +98,18 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
 
     secondarySelected = null;
 
+    readonly valueContentVariants = [
+        '',
+        'TOP SECRET',
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.max ? 'MAX' : val,
+        ({$implicit: val}: TuiContextWithImplicit<number>) =>
+            val === this.min ? 'MIN' : val,
+        ({$implicit: val}: TuiContextWithImplicit<number>) => (val === 5 ? 'FIVE' : val),
+    ];
+
+    valueContent = this.valueContentVariants[0];
+
     readonly minLabelVariants: readonly string[] = ['', 'Nothing'];
 
     minLabel = this.minLabelVariants[0];
@@ -107,6 +121,16 @@ export class ExampleTuiInputSliderComponent extends AbstractExampleTuiControl {
     readonly keyStepsVariants: ReadonlyArray<TuiKeySteps> = [[[50, 1000]]];
 
     keySteps = null;
+
+    readonly autocompleteVariants = ['off', 'transaction-amount'];
+    autocomplete: TuiTransactionAutofillName | null = null;
+
+    readonly customContentVariants: string[] = [
+        'tuiIconVisaMono',
+        'tuiIconMastercardMono',
+    ];
+
+    customContentSelected = null;
 
     get secondary(): string | null {
         return this.secondarySelected === this.secondaryVariants[0]
