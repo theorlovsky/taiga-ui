@@ -16,7 +16,7 @@ import {
     TuiTooltipModule,
     TuiWrapperModule,
 } from '@taiga-ui/core';
-import {TuiInputNumberModule} from '@taiga-ui/kit/components';
+import {TuiInputNumberModule} from '@taiga-ui/kit/components/input-number';
 import {TuiSliderModule} from '@taiga-ui/kit/components/slider';
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import {TextMaskModule} from 'angular2-text-mask';

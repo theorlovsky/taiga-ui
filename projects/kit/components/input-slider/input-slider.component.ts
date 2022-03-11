@@ -37,7 +37,7 @@ import {
     TuiTextfieldController,
 } from '@taiga-ui/core';
 import {AbstractTuiInputSlider} from '@taiga-ui/kit/abstract';
-import {TuiInputNumberComponent} from '@taiga-ui/kit/components';
+import {TuiInputNumberComponent} from '@taiga-ui/kit/components/input-number';
 import {
     TuiSliderComponent,
     tuiSliderOptionsProvider,
@@ -82,7 +82,7 @@ export class TuiNewInputSliderDirective {}
     ],
 })
 /**
- * TODO replace `extends AbstractTuiInputSlider<number>` by `extends AbstractTuiControl<T> implements TuiWithOptionalMinMax<number>`
+ * TODO replace `extends AbstractTuiInputSlider<number>` by `extends AbstractTuiControl<number> implements TuiWithOptionalMinMax<number>`
  * in v3.0
  */
 export class TuiInputSliderComponent
